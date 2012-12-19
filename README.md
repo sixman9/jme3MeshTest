@@ -1,6 +1,6 @@
 # jme3MeshTest
 
-This project serves as a proof of concept of the retrieval and integration of Maven-repository distributed [jMonkeyEngine 3][3] (jme3) Java libraries into a [Gradle][1] managed [Groovy][2]-based build script.
+This project serves as a proof of concept of the retrieval and integration of Maven-repository-distributed [jMonkeyEngine 3][3] (jme3) Java libraries into a [Gradle][1] managed [Groovy][2]-based build script.
 
 [Gradle][2] takes advantage of a fully-fleged Java-compatible programming language, [Groovy][2], while extending Ant-sourced project build techniques and Maven-like library repository management. Basically it's like Ant and Maven rolled into one while letting you write FOR loops or programatically scrape a webpage in the middle of a build!
 
