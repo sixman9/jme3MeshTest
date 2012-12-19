@@ -2,7 +2,7 @@
 //See also www.gradle.org for more details
 
 //Default Tasks - What to do if gradle is run with no arguments
-defaultTasks 'build', 'runJar'
+defaultTasks 'build', 'runAppJar'
 
 version = 0.1
 
@@ -37,12 +37,10 @@ repositories {
 	mavenRepo url: "http://oss.sonatype.org/content/repositories/snapshots"
 }
 
-//configurations - RTFM ;-)
-/*
+//configurations - a named alias to attach dependencies to
 configurations {
-	all*.exclude group: 'xml-apis',  module: 'xml-apis'
+	jmeExamplesConfig.extendsFrom(compile)
 }
-*/
 
 //Tell Gradle where our source files live (default = <project>/source/main/java|groovy|etc)
 sourceSets {
@@ -60,6 +58,7 @@ sourceSets {
 project.ext {
 	//jMonkeyEngine release version
 	jme3ReleaseVersion='3.0.0.20120512-SNAPSHOT'
+	jarPath
 }
 
 //Actual project dependencies
@@ -100,6 +99,9 @@ dependencies {
 		compile "com.jme3:stack-alloc:$jme3ReleaseVersion"
 		compile "com.jme3:vecmath:$jme3ReleaseVersion"
 		compile "com.jme3:xmlpull-xpp3:$jme3ReleaseVersion"
+		
+		//jme3 Examples archive
+		jmeExamplesConfig "com.jme3:jmonkeyengine3:$jme3ReleaseVersion"
 }
 
 //Generate self-distributing Gradle wrapper - BTW, simple task definition
@@ -129,12 +131,19 @@ jar {
     }
 }
 
-//task runJar(dependsOn:[build]) << {
-task runJar << {
+//task runAppJar(dependsOn:[build]) << {
+task runAppJar << {
+  configuration = project.configurations.compile
   ant.java(jar: jar.archivePath ,fork:true)
 }
 
-runJar.description = "Executes the bundled Jar artifact, equivalent to 'java -jar <executable>.jar'."
+runAppJar.description = "Executes the bundled Jar artifact, equivalent to 'java -jar <executable>.jar'."
+
+task runExamples << {
+  project.ext.jarPath = project.configurations.jmeExamplesConfig.find { it.name.startsWith("jmonkeyengine3") } //http://stackoverflow.com/a/9580193/304330
+  configuration = project.configurations.jmeExamplesConfig  
+  ant.java(jar: project.ext.jarPath ,fork:true)
+}
 
 /*
 Choose Eclipse project natures from the following:
