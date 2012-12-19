@@ -107,6 +107,8 @@ task('wrapper', type: Wrapper).configure {
     gradleVersion = '1.3'
 }
 
+wrapper.description = "Creates a project-installed distribution of the specified Gradle runtime version (gradlew)."
+
 //sdk version variable - used for IDE setup (later) 
 def versionCompatibility = 1.6
 
@@ -131,6 +133,8 @@ jar {
 task runJar << {
   ant.java(jar: jar.archivePath ,fork:true)
 }
+
+runJar.description = "Executes the bundled Jar artifact, equivalent to 'java -jar <executable>.jar'."
 
 /*
 Choose Eclipse project natures from the following:
