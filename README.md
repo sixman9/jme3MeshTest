@@ -1,12 +1,16 @@
 # jme3MeshTest
 
-This project serves as a proof of concept of the retrieval and integration of Maven-repository-distributed [jMonkeyEngine 3][3] (jme3) Java libraries into a [Gradle][1] managed [Groovy][2]-based build script.
-
-[Gradle][2] takes advantage of a fully-fleged Java-compatible programming language, [Groovy][2], while extending Ant-sourced project build techniques and Maven-like library repository management. Basically it's like Ant and Maven rolled into one while letting you write FOR loops or programatically scrape a webpage in the middle of a build!
+This project serves as a proof of concept of the retrieval and integration of Maven-repository-distributed [jMonkeyEngine 3][3] (jme3) Java libraries into a [Gradle][1] managed [Groovy][2]-based build script. This jme3 and [Gradle][1] test project uses the **[jme3test.model.shape.TestCustomMesh][4]** test class, just type **'gradlew'** to run it.
 
 Running **'gradlew'** or **'gradle'** [if installed] is enough to execute the default tasks (build, runJar).  
   
 For IDE project setup, run **'gradle[w] eclipse'** OR **'gradle[w] idea'**, e.g. **gradlew idea**. After, import the new project into your IDE (all libraries, source and classpaths will be resolved).  
+
+# About Gradle
+
+[Gradle][2] takes advantage of a fully-fleged Java-compatible programming language, [Groovy][2], while extending Ant-sourced project build techniques and Maven-like distributed code repository library management. Basically it's like Ant and Maven rolled into one while letting you write 'FOR' loops and 'CASE' statements or programatically scraping a webpage or writing a file in the middle of a build!
+
+Although [Gradle][1] is [Groovy][2] based, [Gradle][1] can be self-distributing via its 'wrapper' task. This means that a Gradle-built project, such as this one, can be built straight after checkout, as long as a JVM is present (i.e. no Gradle install required!).
 
 **output from 'gradle tasks':**
 
@@ -61,3 +65,4 @@ Other tasks
 [1]: http://www.gradle.org
 [2]: http://groovy.codehaus.org
 [3]: http://www.jmonkeyengine.org
+[4]: https://code.google.com/p/jmonkeyengine/source/browse/trunk/engine/src/test/jme3test/model/shape/TestCustomMesh.java
