@@ -1,5 +1,8 @@
-//gradle.build - run 'gradle tasks' or 'gradlew tasks'  for help
+//gradle.build - run 'gradlew' or 'gradle' (when installed) for default tasks or 'gradlew tasks' or 'gradle tasks'  for help
 //See also www.gradle.org for more details
+
+//Default Tasks - What to do if gradle is run with no arguments
+defaultTasks 'build', 'runJar'
 
 version = 0.1
 
@@ -53,8 +56,11 @@ sourceSets {
     }
 }
 
-//jMonkeyEngine release version
-jme3ReleaseVersion='3.0.0.20120512-SNAPSHOT'
+//new Extra Properties Extension - no more ad-hoc, impromptu variables as of Gradle 2.0, they're deprecated
+project.ext {
+	//jMonkeyEngine release version
+	jme3ReleaseVersion='3.0.0.20120512-SNAPSHOT'
+}
 
 //Actual project dependencies
 dependencies {
@@ -171,3 +177,4 @@ idea {
 		}
 	}
 }
+
