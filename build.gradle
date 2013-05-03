@@ -11,8 +11,8 @@ apply plugin: 'java'
 apply plugin: 'idea'
 apply plugin: 'eclipse'
 
-//[project] Templates plugin
-apply from: 'http://launchpad.net/gradle-templates/trunk/latest/+download/apply.groovy'
+//[project] Templates plugin - See also 'http://www.tellurianring.com/projects/gradle-plugins/gradle-templates/apply.groovy'
+apply from: 'https://raw.github.com/townsfolk/gradle-templates/master/installation/apply.groovy'
 
 apply plugin:'application'
 mainClassName = 'jme3test.model.shape.TestCustomMesh'
